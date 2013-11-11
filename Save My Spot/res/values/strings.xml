@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SaveMySpot</string>
+    <string name="action_settings">Settings</string>
+    <string name="intro_wellcome">Welcome, </string>
+    <string name="intro_text">SaveMySpot is the program that will allow you to save, memorize and find previously saved places everywhere. In unknown city, where the only thing you know is the location of your hotel, or the location of the last shop, where you have liked an item so much, but can not buy before payday, and many, many more&#8230;  </string>
+    <string name="login_text">In order to continue, please login. </string>
+    <string name="user_name">Enter Username</string>
+    <string name="password">Enter Password</string>
+    <string name="login_btn">Login </string>
+    <string name="register_btn">Register </string>
+
+</resources>
