@@ -3,8 +3,8 @@
     android:id="@+id/TableLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginRegisterActivity"
-    android:background="@drawable/background"  >
+    android:background="@drawable/background"
+    tools:context=".LoginRegisterActivity" >
 
     <TableRow
         android:id="@+id/tableRow1"
@@ -19,7 +19,7 @@
             android:layout_marginTop="@dimen/activity_margin"
             android:padding="@dimen/activity_padding"
             android:text="@string/intro_wellcome"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:textStyle="italic" />
     </TableRow>
 
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/activity_padding"
             android:text="@string/intro_text"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:textStyle="italic" />
     </TableRow>
 
@@ -47,9 +47,22 @@
             android:id="@+id/loginInfoTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/activity_padding"
+            android:padding="@dimen/activity_padding" 
             android:text="@string/login_text"
             android:textStyle="bold" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/errorTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/activity_padding"
+            android:textColor="@color/red" />
     </TableRow>
 
     <TableRow
@@ -105,19 +118,4 @@
             android:text="@string/register_btn" />
     </TableRow>
 
-    <TableRow
-        android:id="@+id/tableRow7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-        
-        <TextView
-        android:id="@+id/errorTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/activity_padding"
-        android:textColor="@color/red"
-        android:text="@string/register_btn" />
-        
-    </TableRow>
- 
 </TableLayout>
