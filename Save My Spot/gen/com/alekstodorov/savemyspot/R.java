@@ -32,25 +32,29 @@ public final class R {
     }
     public static final class id {
         public static final int TableLayout1=0x7f090000;
-        public static final int action_settings=0x7f090010;
-        public static final int errorTextView=0x7f090008;
+        public static final int action_settings=0x7f090013;
+        public static final int enterButton=0x7f090012;
+        public static final int errorTextView=0x7f090009;
         public static final int introTextView=0x7f090004;
-        public static final int loginButton=0x7f09000e;
+        public static final int loggedUsername=0x7f090007;
+        public static final int loginButton=0x7f09000b;
         public static final int loginInfoTextView=0x7f090006;
-        public static final int passwordEditText=0x7f09000c;
-        public static final int registerButton=0x7f09000f;
+        public static final int logoffButton=0x7f090011;
+        public static final int passwordEditText=0x7f090010;
+        public static final int registerButton=0x7f09000c;
         public static final int tableRow1=0x7f090001;
         public static final int tableRow2=0x7f090003;
         public static final int tableRow3=0x7f090005;
-        public static final int tableRow4=0x7f090009;
-        public static final int tableRow5=0x7f09000b;
-        public static final int tableRow6=0x7f09000d;
-        public static final int tableRow7=0x7f090007;
-        public static final int usernameEditText=0x7f09000a;
+        public static final int tableRow4=0x7f09000d;
+        public static final int tableRow5=0x7f09000e;
+        public static final int tableRow6=0x7f09000a;
+        public static final int tableRow7=0x7f090008;
+        public static final int usernameEditText=0x7f09000f;
         public static final int welcomeTextView=0x7f090002;
     }
     public static final class layout {
         public static final int activity_login_register=0x7f030000;
+        public static final int enter_layout=0x7f030001;
     }
     public static final class menu {
         public static final int login_register=0x7f080000;
@@ -58,11 +62,14 @@ public final class R {
     public static final class string {
         public static final int action_settings=0x7f060001;
         public static final int app_name=0x7f060000;
+        public static final int currently_logged_user=0x7f06000a;
+        public static final int enter_btn=0x7f060009;
         public static final int intro_text=0x7f060003;
         public static final int intro_wellcome=0x7f060002;
-        public static final int invalid_password=0x7f060009;
-        public static final int invalid_username_lenght=0x7f06000a;
-        public static final int invalid_username_symbols=0x7f06000b;
+        public static final int invalid_password=0x7f06000c;
+        public static final int invalid_username_lenght=0x7f06000d;
+        public static final int invalid_username_symbols=0x7f06000e;
+        public static final int log_off_btn=0x7f06000b;
         public static final int login_btn=0x7f060007;
         public static final int login_text=0x7f060004;
         public static final int password=0x7f060006;

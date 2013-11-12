@@ -10,6 +10,9 @@
     <string name="password">Enter Password</string>
     <string name="login_btn">Login </string>
     <string name="register_btn">Register </string>
+    <string name="enter_btn">Enter </string>
+    <string name="currently_logged_user">Currently loged in user:  </string>
+    <string name="log_off_btn">Log off </string>
     <string name="invalid_password">Invalid password. Please try again! </string>
     <string name="invalid_username_lenght">Username must be between 5 and 15 symbols </string>
     <string name="invalid_username_symbols">Username contains invalid symbols</string>
