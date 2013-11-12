@@ -30,7 +30,13 @@ public class LoginRegisterActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+
 		super.onCreate(savedInstanceState);
+
+		decideLayoutModel();
+	}
+
+	private void decideLayoutModel() {
 
 		UserModel loggedUser = dbTools.getLoggedUser();
 
@@ -40,24 +46,18 @@ public class LoginRegisterActivity extends Activity {
 
 			initEnterComponents();
 
-			Log.i(HelpUtilities.TAG,
-					"Currently logged user: " + loggedUser.getUsername());
-
-			//loggedUsername.setText("TEST");
+			loggedUsername.setText("Currently loged in user: " +  loggedUser.getUsername());
 
 		} else {
 			setContentView(R.layout.activity_login_register);
-			
+
 			initLoginComponents();
-
-			Log.i(HelpUtilities.TAG, "Currently no user is logged in");
 		}
-	}
-
+	} 
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.login_register, menu);
 		return true;
 	}
@@ -71,12 +71,12 @@ public class LoginRegisterActivity extends Activity {
 	}
 
 	private void initEnterComponents() {
-		loggedUsername = (TextView) findViewById(R.id.loggedUsername);
+		loggedUsername = (TextView) findViewById(R.id.logedUserInfoTextView);
 		logoffButton = (Button) findViewById(R.id.logoffButton);
 		enterButton = (Button) findViewById(R.id.enterButton);
 	}
 
-	public void loginUser(View view) {
+	public void loginUserButtonClicked(View view) {
 
 		clearErrorMessage();
 
@@ -98,15 +98,6 @@ public class LoginRegisterActivity extends Activity {
 
 				Log.i(HelpUtilities.TAG, "Logging user " + user.getUsername());
 
-				UserModel loggedUser = dbTools.getLoggedUser();
-
-				if (loggedUser != null) {
-					Log.i(HelpUtilities.TAG, "Currently logged user: "
-							+ loggedUser.getUsername());
-				} else {
-					Log.i(HelpUtilities.TAG, "Currently no user is logged in");
-				}
-
 			} else {
 				errorNotificationTextView
 						.setText("Username or password is incorect!");
@@ -116,7 +107,7 @@ public class LoginRegisterActivity extends Activity {
 		}
 	}
 
-	public void registerUser(View view) {
+	public void registerUserButtonClicked(View view) {
 		clearErrorMessage();
 		getInfoFromEditFields();
 
@@ -132,18 +123,21 @@ public class LoginRegisterActivity extends Activity {
 			dbTools.insertUser(user);
 			Log.i(HelpUtilities.TAG, "Registering user " + user.getUsername());
 
-			UserModel loggedUser = dbTools.getLoggedUser();
-
-			if (loggedUser != null) {
-				Log.i(HelpUtilities.TAG,
-						"Currently logged user: " + loggedUser.getUsername());
-			} else {
-				Log.i(HelpUtilities.TAG, "Currently no user is logged in");
-			}
-
 		} else {
 			errorNotificationTextView.setText("User already exists!");
 		}
+	}
+
+	public void enterButtonClicked(View view) {
+
+		Log.i(HelpUtilities.TAG, "Enter further in the app");
+	}
+
+	public void logOffButtonClicked(View view) {
+
+		dbTools.resetIsLoggedValue();
+
+		decideLayoutModel();
 	}
 
 	private UserModel getInfoFromEditFields() {
@@ -160,9 +154,10 @@ public class LoginRegisterActivity extends Activity {
 
 			try {
 				encodedPassword = HelpUtilities.encodePassword(password);
+				
 				// Logging results for debugging purposes;
-				Log.i(HelpUtilities.TAG, "Username: " + userName);
-				Log.i(HelpUtilities.TAG, "Password: " + encodedPassword);
+				// Log.i(HelpUtilities.TAG, "Username: " + userName);
+				// Log.i(HelpUtilities.TAG, "Password: " + encodedPassword);
 
 				user.setUsername(userName);
 				user.setPassword(encodedPassword);
@@ -188,8 +183,7 @@ public class LoginRegisterActivity extends Activity {
 		passwordEditText.setText("");
 	}
 
-	private void clearErrorMessage() {
-
+	private void clearErrorMessage() { 
 		errorNotificationTextView.setText("");
 	}
 }
