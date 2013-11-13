@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="9"
+        android:minSdkVersion="11"
         android:targetSdkVersion="18" />
 
     <application
@@ -21,8 +21,16 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> 
-        <activity android:name="com.alekstodorov.savemyspot.SpotListviewActivity"></activity>
-        <activity android:name="com.alekstodorov.savemyspot.SpotViewPager"></activity>
-    </application> 
+        </activity>
+        <activity android:name="com.alekstodorov.savemyspot.SpotListviewActivity" >
+        </activity>
+        <activity android:name="com.alekstodorov.savemyspot.SpotViewPager" >
+        </activity>
+        <activity android:name="com.alekstodorov.savemyspot.CrateSpotActivity" >
+        </activity>
+    </application>
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
 </manifest>

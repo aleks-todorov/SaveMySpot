@@ -8,7 +8,7 @@ import com.alekstodorov.savemyspot.utils.HelpUtilities;
   
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.ListFragment; 
+import android.support.v4.app.ListFragment;  
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter; 
@@ -28,13 +28,17 @@ public class FragmentSpotList extends ListFragment {
 		
 		// Get the ArrayList from AllContacts
 		
+		populateListView(); 
+	}
+	 
+	public void populateListView() {
 		spotsList = AllSpots.get(getActivity()).getSpotsList();
 		
 		SpotAdapter contactAdapter = new SpotAdapter(spotsList);
 		
 		// Provides the data for the ListView by setting the Adapter 
 		
-		setListAdapter(contactAdapter); 
+		setListAdapter(contactAdapter);
 	}
 	
 	@Override
@@ -114,5 +118,5 @@ public class FragmentSpotList extends ListFragment {
 			
 	        return convertView; 
 		} 
-	} 
+	}  
 }

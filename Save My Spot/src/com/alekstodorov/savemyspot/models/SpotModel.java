@@ -7,6 +7,10 @@ public class SpotModel {
 	private String description;
 	private double latitute;
 	private double longitude;
+	
+	public SpotModel(){
+		
+	}
 
 	public SpotModel(long id, String title, String description,
 			double latitute, double longitude) {

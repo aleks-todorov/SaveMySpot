@@ -8,6 +8,7 @@ public class HelpUtilities {
 	
 	public static final String TAG = "SaveMySpotTag";
 	public static final String SPOT_ID = "com.alekstodorov.savemyspot.spotId";
+	public static final int CREATOR_ACTIVITY_REQUEST = 1001;
 	private static final String USERNAME_AVAILABLE_SYMBOLS = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890_.";
 	private static final String PASSWORD_AVAILABLE_SYMBOLS = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890_.!@$";
 

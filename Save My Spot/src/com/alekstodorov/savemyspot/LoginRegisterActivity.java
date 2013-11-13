@@ -9,8 +9,7 @@ import com.alekstodorov.savemyspot.utils.HelpUtilities;
   
 import android.os.Bundle;
 import android.app.Activity;
-import android.content.Intent; 
-import android.view.Menu;
+import android.content.Intent;  
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +17,7 @@ import android.widget.TextView;
 
 public class LoginRegisterActivity extends Activity {
 
-	DbTools dbTools = new DbTools(this);;
+	DbTools dbTools = new DbTools(this);
 	EditText userNameEditText;
 	EditText passwordEditText;
 	TextView errorNotificationTextView;
@@ -54,14 +53,7 @@ public class LoginRegisterActivity extends Activity {
 			initLoginComponents();
 		}
 	} 
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-
-		getMenuInflater().inflate(R.menu.login_register, menu);
-		return true;
-	}
-
+	 
 	private void initLoginComponents() {
 		userNameEditText = (EditText) findViewById(R.id.usernameEditText);
 		passwordEditText = (EditText) findViewById(R.id.passwordEditText);
@@ -106,6 +98,7 @@ public class LoginRegisterActivity extends Activity {
 	}
 
 	private void navigateIntoApp() {
+		
 		Intent theIntent = new Intent(getApplication(), SpotListviewActivity.class);
 		 
 		startActivity(theIntent);

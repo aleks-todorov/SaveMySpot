@@ -10,7 +10,7 @@ public class AllSpots {
 
 	private static AllSpots allSpots;
 	private Context applicationContext;
-	private ArrayList<SpotModel> spotsList;
+	private static  ArrayList<SpotModel> spotsList;
 
 	private AllSpots(Context applicationContext) {
 
@@ -70,6 +70,12 @@ public class AllSpots {
 		SpotModel spotTwoelve = new SpotModel(12, "Test spot 12",
 				"Spot 12 description", 51.124325, 95.23445);
 		spotsList.add(spotTwoelve);
+	}
+	
+	public static void addSpot(SpotModel spot){
+		
+		spotsList.add(spot);
+		 
 	}
 
 	public static AllSpots get(Context context) {

@@ -13,6 +13,7 @@
     <string name="enter_btn">Enter </string>
     <string name="currently_logged_user">Currently loged in user:  </string>
     <string name="log_off_btn">Log off </string>
+    <string name="action_create">Create</string>
     <string name="invalid_password">Invalid password. Please try again! </string>
     <string name="invalid_username_lenght">Username must be between 5 and 15 symbols </string>
     <string name="invalid_username_symbols">Username contains invalid symbols</string>
@@ -21,5 +22,8 @@
     <string name="list_item_spot_description">Description:</string>
     <string name="list_item_longitude">Longitude:</string>
     <string name="list_item_latitude">Latitude:</string>
+    <string name="create_item_title">Enter Title</string>
+    <string name="create_item_description">Enter Description</string>
+    <string name="create_item_create_btn">Create</string>
 
 </resources>
