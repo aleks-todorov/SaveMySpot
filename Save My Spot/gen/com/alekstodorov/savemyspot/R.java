@@ -35,12 +35,13 @@ public final class R {
     public static final class id {
         public static final int TableLayout1=0x7f060011;
         public static final int TableLoginLayout=0x7f060001;
-        public static final int action_create=0x7f060021;
+        public static final int action_create=0x7f060022;
         public static final int create_spot_btn=0x7f060014;
+        public static final int delete_item_btn=0x7f06001e;
         public static final int descriptionTextView=0x7f060019;
         public static final int enterButton=0x7f060017;
         public static final int errorTextView=0x7f060009;
-        public static final int fragmentContainer=0x7f060020;
+        public static final int fragmentContainer=0x7f060021;
         public static final int introTextView=0x7f060005;
         public static final int latitudeTextView=0x7f06001c;
         public static final int latitudeValueTextView=0x7f06001d;
@@ -52,9 +53,9 @@ public final class R {
         public static final int longitudeValueTextView=0x7f06001b;
         public static final int passwordEditText=0x7f06000d;
         public static final int registerButton=0x7f060010;
-        public static final int spot_description=0x7f06001f;
+        public static final int spot_description=0x7f060020;
         public static final int spot_description_editText=0x7f060013;
-        public static final int spot_title=0x7f06001e;
+        public static final int spot_title=0x7f06001f;
         public static final int spot_title_editText=0x7f060012;
         public static final int tableRow1=0x7f060002;
         public static final int tableRow2=0x7f060004;
@@ -83,9 +84,10 @@ public final class R {
         public static final int action_create=0x7f07000c;
         public static final int action_settings=0x7f070001;
         public static final int app_name=0x7f070000;
-        public static final int create_item_create_btn=0x7f070017;
-        public static final int create_item_description=0x7f070016;
-        public static final int create_item_title=0x7f070015;
+        public static final int create_item_create_btn=0x7f070018;
+        public static final int create_item_description=0x7f070017;
+        public static final int create_item_page_title=0x7f070019;
+        public static final int create_item_title=0x7f070016;
         public static final int currently_logged_user=0x7f07000a;
         public static final int enter_btn=0x7f070009;
         public static final int fragment_spots_list_title=0x7f070010;
@@ -94,6 +96,7 @@ public final class R {
         public static final int invalid_password=0x7f07000d;
         public static final int invalid_username_lenght=0x7f07000e;
         public static final int invalid_username_symbols=0x7f07000f;
+        public static final int list_item_delete_btn=0x7f070015;
         public static final int list_item_latitude=0x7f070014;
         public static final int list_item_longitude=0x7f070013;
         public static final int list_item_spot_description=0x7f070012;

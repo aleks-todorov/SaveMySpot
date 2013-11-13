@@ -110,4 +110,19 @@ public class AllSpots {
 
 		return null; 
 	} 
+	
+	public static void removeSpot(int id){
+		
+		int itemId = 0;
+		
+		for (int i = 0; i < spotsList.size(); i++) {
+			 
+			if(spotsList.get(i).getId() == id){
+				itemId = i;
+				break;
+			}
+		}
+		
+		spotsList.remove(itemId);
+	}
 }

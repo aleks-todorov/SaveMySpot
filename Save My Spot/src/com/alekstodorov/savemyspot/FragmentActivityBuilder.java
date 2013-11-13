@@ -1,6 +1,6 @@
 package com.alekstodorov.savemyspot;
 
-import com.alekstodorov.savemyspot.utils.HelpUtilities;
+ import com.alekstodorov.savemyspot.utils.HelpUtilities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -56,8 +56,8 @@ public abstract class FragmentActivityBuilder extends FragmentActivity {
 			fragManager.beginTransaction()
 					.add(R.id.fragmentContainer, theFragment).commit();
 		}
-	} 
-	
+	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -95,6 +95,6 @@ public abstract class FragmentActivityBuilder extends FragmentActivity {
 
 		Intent intent = new Intent(this, SpotListviewActivity.class);
 
-		startActivity(intent); 
-	}
+		startActivity(intent);
+	} 
 }

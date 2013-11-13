@@ -22,8 +22,10 @@
     <string name="list_item_spot_description">Description:</string>
     <string name="list_item_longitude">Longitude:</string>
     <string name="list_item_latitude">Latitude:</string>
+    <string name="list_item_delete_btn">Delete</string>
     <string name="create_item_title">Enter Title</string>
     <string name="create_item_description">Enter Description</string>
     <string name="create_item_create_btn">Create</string>
+    <string name="create_item_page_title">Add new Spot</string>
 
 </resources>

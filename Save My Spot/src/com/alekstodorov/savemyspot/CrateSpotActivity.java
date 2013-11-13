@@ -23,6 +23,7 @@ public class CrateSpotActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.create_spot);
+		setTitle(R.string.create_item_page_title);
 
 		initComponents();
 	}
@@ -39,7 +40,7 @@ public class CrateSpotActivity extends Activity {
 
 			longitude = gps.getLongitude();
 			latitude = gps.getLatitude();
-			
+
 			SpotModel theSpot = new SpotModel(13, title, description, latitude,
 					longitude);
 
@@ -48,14 +49,14 @@ public class CrateSpotActivity extends Activity {
 			Log.i(HelpUtilities.TAG, "New spot Added");
 
 			gps.stopUsingGPS();
-			
+
 			Intent intent = new Intent();
 
 			setResult(RESULT_OK, intent);
 			finish();
-		}else { 
-			gps.showSettingsAlert(); 
-		} 
+		} else {
+			gps.showSettingsAlert();
+		}
 	}
 
 	private void initComponents() {

@@ -26,7 +26,7 @@ public class SpotViewPager extends FragmentActivity {
 		theViewPager = new ViewPager(this);
 		theViewPager.setId(R.id.viewPager);
 		spotList = AllSpots.get(this).getSpotsList();
-		
+		 
 		setContentView(theViewPager);
 
 		getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -63,7 +63,7 @@ public class SpotViewPager extends FragmentActivity {
 		}
 	}  
 	
-	// Allows using the App logo to navigate back
+	// Allows using the Application header to navigate back
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {

@@ -1,17 +1,23 @@
 package com.alekstodorov.savemyspot;
- 
+
+import android.app.AlertDialog; 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.Fragment;
  
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup; 
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.alekstodorov.savemyspot.models.SpotModel;
 import com.alekstodorov.savemyspot.utils.AllSpots;
 import com.alekstodorov.savemyspot.utils.HelpUtilities;
-  
+
 public class SpotFragment extends Fragment {
 
 	private SpotModel theSpot;
@@ -19,6 +25,7 @@ public class SpotFragment extends Fragment {
 	private TextView descriptionTextView;
 	private TextView latitudeValueTextView;
 	private TextView longitudeValueTextView;
+	private Button deleteButton;
 
 	public static SpotFragment newSpotFragment(long id) {
 
@@ -35,20 +42,13 @@ public class SpotFragment extends Fragment {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
 
-		// NEW Replace contact = new Contact();
-		// Get the value from CONTACT_ID that was passed in
+		super.onCreate(savedInstanceState);
 
 		long spotId = (Long) getArguments().getSerializable(
 				HelpUtilities.SPOT_ID);
 
-		// Get the Contact with the matching ID
-
 		theSpot = AllSpots.get(getActivity()).getSpot(spotId);
-
-		// END OF NEW
 	}
 
 	@Override
@@ -66,17 +66,60 @@ public class SpotFragment extends Fragment {
 		descriptionTextView = (TextView) theView
 				.findViewById(R.id.descriptionTextView);
 		latitudeValueTextView = (TextView) theView
-				.findViewById(R.id.latitudeValueTextView); 
+				.findViewById(R.id.latitudeValueTextView);
 		longitudeValueTextView = (TextView) theView
 				.findViewById(R.id.longitudeValueTextView);
+		deleteButton = (Button) theView.findViewById(R.id.delete_item_btn);
+
+		deleteButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+ 
+				AlertDialog.Builder alertDialog = new AlertDialog.Builder(
+						getActivity());
+
+				// Setting Dialog Title
+				alertDialog.setTitle("Delete list item");
+
+				// Setting Dialog Message
+				alertDialog.setMessage("Are you sure that you want to delete this item?");
+
+				// On pressing Settings button
+				alertDialog.setPositiveButton("Yes",
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog,
+									int which) {
+
+								int id = (int) theSpot.getId();
+
+								AllSpots.removeSpot(id);
+
+								Intent intent = new Intent(getActivity(),
+										SpotListviewActivity.class);
+
+								startActivity(intent);
+							}
+						});
+
+				alertDialog.setNegativeButton("No",
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog,
+									int which) {
+								dialog.cancel();
+							}
+						});
+
+				// Showing Alert Message
+				alertDialog.show();
+			}
+		});
 
 		titleTextView.setText(theSpot.getTitle());
 		descriptionTextView.setText(theSpot.getDescription());
 		latitudeValueTextView.setText(String.valueOf(theSpot.getLatitute()));
 		longitudeValueTextView.setText(String.valueOf(theSpot.getLongitude()));
-		 
+
 		return theView;
-		// All the EditText components will use just one TextWatcher
-		// which auto updates Contact.java 
-	}; 
+	};
 }
