@@ -21,7 +21,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-    </application>
-
+        </activity> 
+        <activity android:name="com.alekstodorov.savemyspot.SpotListviewActivity"></activity>
+        <activity android:name="com.alekstodorov.savemyspot.SpotViewPager"></activity>
+    </application> 
 </manifest>

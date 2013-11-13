@@ -7,6 +7,7 @@ import java.security.NoSuchAlgorithmException;
 public class HelpUtilities {
 	
 	public static final String TAG = "SaveMySpotTag";
+	public static final String SPOT_ID = "com.alekstodorov.savemyspot.spotId";
 	private static final String USERNAME_AVAILABLE_SYMBOLS = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890_.";
 	private static final String PASSWORD_AVAILABLE_SYMBOLS = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890_.!@$";
 

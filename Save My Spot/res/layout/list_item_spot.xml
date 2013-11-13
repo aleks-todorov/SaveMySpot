@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView
+        android:id="@+id/spot_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         android:padding="4dp"
+        android:text="@string/list_item_spot_title"
+        android:textStyle="bold" />
+    
+    <TextView
+        android:id="@+id/spot_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spot_title" 
+        android:padding="4dp"
+        android:text="@string/list_item_spot_description" />
+     
+</RelativeLayout>

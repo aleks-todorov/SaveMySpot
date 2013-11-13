@@ -6,10 +6,10 @@ import java.security.NoSuchAlgorithmException;
 import com.alekstodorov.savemyspot.models.UserModel;
 import com.alekstodorov.savemyspot.utils.DbTools;
 import com.alekstodorov.savemyspot.utils.HelpUtilities;
-
+  
 import android.os.Bundle;
 import android.app.Activity;
-import android.util.Log;
+import android.content.Intent; 
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -89,14 +89,12 @@ public class LoginRegisterActivity extends Activity {
 		if (existingUser != null) {
 
 			if (user.getPassword().equals(existingUser.getPassword())) {
-
-				// TODO implement login functionality
-
+ 
 				user.setLoggedIn(true);
 
 				dbTools.updateContact(user);
-
-				Log.i(HelpUtilities.TAG, "Logging user " + user.getUsername());
+ 
+				navigateIntoApp();
 
 			} else {
 				errorNotificationTextView
@@ -105,6 +103,12 @@ public class LoginRegisterActivity extends Activity {
 		} else {
 			errorNotificationTextView.setText("User does not exists!");
 		}
+	}
+
+	private void navigateIntoApp() {
+		Intent theIntent = new Intent(getApplication(), SpotListviewActivity.class);
+		 
+		startActivity(theIntent);
 	}
 
 	public void registerUserButtonClicked(View view) {
@@ -120,8 +124,10 @@ public class LoginRegisterActivity extends Activity {
 		if (existingUser == null) {
 
 			user.setLoggedIn(true);
+			
 			dbTools.insertUser(user);
-			Log.i(HelpUtilities.TAG, "Registering user " + user.getUsername());
+			  
+			navigateIntoApp();
 
 		} else {
 			errorNotificationTextView.setText("User already exists!");
@@ -130,13 +136,17 @@ public class LoginRegisterActivity extends Activity {
 
 	public void enterButtonClicked(View view) {
 
-		Log.i(HelpUtilities.TAG, "Enter further in the app");
+		navigateIntoApp();
 	}
 
 	public void logOffButtonClicked(View view) {
 
-		dbTools.resetIsLoggedValue();
-
+		UserModel loggedUser = dbTools.getLoggedUser();
+		
+		loggedUser.setLoggedIn(false);
+		
+		dbTools.updateContact(loggedUser);
+		 
 		decideLayoutModel();
 	}
 
