@@ -21,7 +21,7 @@ public class LoginRegisterActivity extends Activity {
 	EditText userNameEditText;
 	EditText passwordEditText;
 	TextView errorNotificationTextView;
-	TextView loggedUsername;
+	TextView loggedUsername;	
 	Button loginButton;
 	Button registerButton;
 	Button logoffButton;

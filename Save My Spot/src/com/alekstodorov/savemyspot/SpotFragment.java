@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v4.app.Fragment;
  
 import android.view.LayoutInflater;
@@ -61,8 +60,7 @@ public class SpotFragment extends Fragment {
 
 		View theView = inflater.inflate(R.layout.fragment_spot, container,
 				false);
-
-		titleTextView = (TextView) theView.findViewById(R.id.titleTextView);
+titleTextView = (TextView) theView.findViewById(R.id.titleTextView);
 		descriptionTextView = (TextView) theView
 				.findViewById(R.id.descriptionTextView);
 		latitudeValueTextView = (TextView) theView
@@ -122,4 +120,5 @@ public class SpotFragment extends Fragment {
 
 		return theView;
 	};
+		
 }
