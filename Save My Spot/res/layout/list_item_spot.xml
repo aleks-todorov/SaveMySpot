@@ -7,18 +7,11 @@
     <TextView
         android:id="@+id/spot_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
+        android:layout_height="wrap_content" 
+        android:padding="@dimen/activity_padding"
         android:text="@string/list_item_spot_title"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/spot_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/spot_title"
+        android:textStyle="bold"
         android:drawableRight="@drawable/ic_action_action_about"
-        android:padding="4dp"
-        android:text="@string/list_item_spot_description" />
+         />
 
 </RelativeLayout>

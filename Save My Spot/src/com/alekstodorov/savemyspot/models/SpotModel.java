@@ -3,8 +3,7 @@ package com.alekstodorov.savemyspot.models;
 public class SpotModel {
 
 	private long id;
-	private String title;
-	private String description;
+	private String title; 
 	private double latitute;
 	private double longitude;
 	
@@ -12,12 +11,11 @@ public class SpotModel {
 		
 	}
 
-	public SpotModel(long id, String title, String description,
+	public SpotModel(long id, String title,
 			double latitute, double longitude) {
 		super();
 		this.id = id;
-		this.title = title;
-		this.description = description;
+		this.title = title; 
 		this.latitute = latitute;
 		this.longitude = longitude;
 	}
@@ -37,15 +35,7 @@ public class SpotModel {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
+ 
 	public double getLatitute() {
 		return latitute;
 	}

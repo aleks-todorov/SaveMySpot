@@ -8,74 +8,64 @@ import android.content.Context;
 
 public class AllSpots {
 
-	private static AllSpots allSpots;
-	private Context applicationContext;
+	private static AllSpots allSpots; 
 	private static  ArrayList<SpotModel> spotsList;
 
 	private AllSpots(Context applicationContext) {
-
-		this.applicationContext = applicationContext;
-
+ 
 		spotsList = new ArrayList<SpotModel>();
-
-		// TODO
-		// This goes away when app is ready
-
-		SpotModel spotOne = new SpotModel(1, "Test spot One",
-				"Spot one description", 24.54445, 58.2344);
+  
+		SpotModel spotOne = new SpotModel(1, "Catedral Church Sveta Nedelya",
+				 42.696741,23.321289);
 		spotsList.add(spotOne);
 
-		SpotModel spotTwo = new SpotModel(2, "Test spot Two",
-				"Spot two description", 34.2345, 18.4544);
+		SpotModel spotTwo = new SpotModel(2, "Saint Clement of Ohridski University",
+				42.6957,23.321568);
 		spotsList.add(spotTwo);
 
-		SpotModel spotThree = new SpotModel(3, "Test spot Three",
-				"Spot three description", 13.54445, 98.2344);
+		SpotModel spotThree = new SpotModel(3, "National Palace of Culture",
+				42.685054,23.318993);
 		spotsList.add(spotThree);
 
-		SpotModel spotFour = new SpotModel(4, "Test spot Four",
-				"Spot four description", 76.14356, 65.234234);
+		SpotModel spotFour = new SpotModel(4, "Mall of Sofia",
+				42.698649,23.308758);
 		spotsList.add(spotFour);
 
-		SpotModel spotFive = new SpotModel(5, "Test spot Five",
-				"Spot one description", 51.124325, 95.23445);
+		SpotModel spotFive = new SpotModel(5, "National Stadium Vasil Levski",
+				42.687593,23.335193);
 		spotsList.add(spotFive);
 		
-		SpotModel spotSix = new SpotModel(6, "Test spot 6",
-				"Spot 6 description", 51.124325, 95.23445);
+		SpotModel spotSix = new SpotModel(6, "The Mall",
+				42.660316,23.381499);
 		spotsList.add(spotSix);
-		
-		
-		SpotModel spotSeven = new SpotModel(7, "Test spot 7",
-				"Spot 7 description", 51.124325, 95.23445);
+		 
+		SpotModel spotSeven = new SpotModel(7, "Telerik Academy",
+				42.650832,23.379439);
 		spotsList.add(spotSeven);
 		
-		SpotModel spotEight = new SpotModel(8, "Test spot 8",
-				"Spot 8 description", 51.124325, 95.23445);
+		SpotModel spotEight = new SpotModel(8, "Saint Alexandar Nevski Cathedral",
+				42.69581,23.332851);
 		spotsList.add(spotEight);
-		
-		
-		SpotModel spotNine = new SpotModel(9, "Test spot 9",
-				"Spot 9 description", 51.124325, 95.23445);
+		 
+		SpotModel spotNine = new SpotModel(9, "Theatre Ivan Vazov",
+				42.694359,23.326499);
 		spotsList.add(spotNine);
 		
-		SpotModel spotTen = new SpotModel(10, "Test spot 10",
-				"Spot 10 description", 51.124325, 95.23445);
+		SpotModel spotTen = new SpotModel(10, "Sheraton Hotel",
+				42.697104,23.322728);
 		spotsList.add(spotTen);
 		
-		SpotModel spotEleven = new SpotModel(11, "Test spot 11",
-				"Spot 11 description", 51.124325, 95.23445);
+		SpotModel spotEleven = new SpotModel(11, "Ministry of Justice",
+				42.694754,23.328834);
 		spotsList.add(spotEleven);
 		
-		SpotModel spotTwoelve = new SpotModel(12, "Test spot 12",
-				"Spot 12 description", 51.124325, 95.23445);
+		SpotModel spotTwoelve = new SpotModel(12, "#Ostavka",
+				42.694178,23.332616);
 		spotsList.add(spotTwoelve);
 	}
 	
-	public static void addSpot(SpotModel spot){
-		
-		spotsList.add(spot);
-		 
+	public static void addSpot(SpotModel spot){ 
+		spotsList.add(spot); 
 	}
 
 	public static AllSpots get(Context context) {
@@ -103,8 +93,7 @@ public class AllSpots {
 
 			if (theSpot.getId() == id) {
 
-				return theSpot;
-
+				return theSpot; 
 			}
 		}
 

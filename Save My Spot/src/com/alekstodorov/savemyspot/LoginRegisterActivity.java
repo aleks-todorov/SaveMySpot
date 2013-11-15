@@ -6,10 +6,10 @@ import java.security.NoSuchAlgorithmException;
 import com.alekstodorov.savemyspot.models.UserModel;
 import com.alekstodorov.savemyspot.utils.DbTools;
 import com.alekstodorov.savemyspot.utils.HelpUtilities;
-  
-import android.os.Bundle;
+
+import android.os.Bundle; 
 import android.app.Activity;
-import android.content.Intent;  
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,7 +21,7 @@ public class LoginRegisterActivity extends Activity {
 	EditText userNameEditText;
 	EditText passwordEditText;
 	TextView errorNotificationTextView;
-	TextView loggedUsername;	
+	TextView loggedUsername;
 	Button loginButton;
 	Button registerButton;
 	Button logoffButton;
@@ -45,15 +45,16 @@ public class LoginRegisterActivity extends Activity {
 
 			initEnterComponents();
 
-			loggedUsername.setText("Currently loged in user: " +  loggedUser.getUsername());
+			loggedUsername.setText("Currently loged in user: "
+					+ loggedUser.getUsername());
 
 		} else {
 			setContentView(R.layout.activity_login_register);
 
 			initLoginComponents();
 		}
-	} 
-	 
+	}
+
 	private void initLoginComponents() {
 		userNameEditText = (EditText) findViewById(R.id.usernameEditText);
 		passwordEditText = (EditText) findViewById(R.id.passwordEditText);
@@ -81,26 +82,27 @@ public class LoginRegisterActivity extends Activity {
 		if (existingUser != null) {
 
 			if (user.getPassword().equals(existingUser.getPassword())) {
- 
+
 				user.setLoggedIn(true);
 
 				dbTools.updateContact(user);
- 
+
 				navigateIntoApp();
 
 			} else {
 				errorNotificationTextView
-						.setText("Username or password is incorect!");
+						.setText(getResources().getString(R.string.exception_incorect_username_or_password)); 
 			}
 		} else {
-			errorNotificationTextView.setText("User does not exists!");
+			errorNotificationTextView.setText(getResources().getString(R.string.exception_user_not_exists)); 
 		}
 	}
 
 	private void navigateIntoApp() {
-		
-		Intent theIntent = new Intent(getApplication(), SpotListviewActivity.class);
-		 
+
+		Intent theIntent = new Intent(getApplication(),
+				SpotListviewActivity.class);
+
 		startActivity(theIntent);
 	}
 
@@ -117,13 +119,13 @@ public class LoginRegisterActivity extends Activity {
 		if (existingUser == null) {
 
 			user.setLoggedIn(true);
-			
+
 			dbTools.insertUser(user);
-			  
+
 			navigateIntoApp();
 
 		} else {
-			errorNotificationTextView.setText("User already exists!");
+			errorNotificationTextView.setText(getResources().getString(R.string.exception_already_exists)); 
 		}
 	}
 
@@ -135,11 +137,11 @@ public class LoginRegisterActivity extends Activity {
 	public void logOffButtonClicked(View view) {
 
 		UserModel loggedUser = dbTools.getLoggedUser();
-		
+
 		loggedUser.setLoggedIn(false);
-		
+
 		dbTools.updateContact(loggedUser);
-		 
+
 		decideLayoutModel();
 	}
 
@@ -157,11 +159,7 @@ public class LoginRegisterActivity extends Activity {
 
 			try {
 				encodedPassword = HelpUtilities.encodePassword(password);
-				
-				// Logging results for debugging purposes;
-				// Log.i(HelpUtilities.TAG, "Username: " + userName);
-				// Log.i(HelpUtilities.TAG, "Password: " + encodedPassword);
-
+ 
 				user.setUsername(userName);
 				user.setPassword(encodedPassword);
 
@@ -169,13 +167,16 @@ public class LoginRegisterActivity extends Activity {
 
 			} catch (NoSuchAlgorithmException e) {
 				errorNotificationTextView.setText("Invalid Password");
+
 				clearPasswordField();
 			} catch (UnsupportedEncodingException e) {
 				errorNotificationTextView.setText("Invalid Password");
+
 				clearPasswordField();
 			}
 		} catch (SecurityException e) {
 			errorNotificationTextView.setText(e.getMessage());
+
 			clearPasswordField();
 		}
 
@@ -186,7 +187,7 @@ public class LoginRegisterActivity extends Activity {
 		passwordEditText.setText("");
 	}
 
-	private void clearErrorMessage() { 
+	private void clearErrorMessage() {
 		errorNotificationTextView.setText("");
 	}
 }

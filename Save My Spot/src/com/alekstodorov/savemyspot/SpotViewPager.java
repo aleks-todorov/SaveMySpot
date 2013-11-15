@@ -5,14 +5,14 @@ import java.util.ArrayList;
 import com.alekstodorov.savemyspot.models.SpotModel;
 import com.alekstodorov.savemyspot.utils.AllSpots;
 import com.alekstodorov.savemyspot.utils.HelpUtilities;
-  
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager; 
+import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
 
 public class SpotViewPager extends FragmentActivity {
@@ -26,11 +26,11 @@ public class SpotViewPager extends FragmentActivity {
 		theViewPager = new ViewPager(this);
 		theViewPager.setId(R.id.viewPager);
 		spotList = AllSpots.get(this).getSpotsList();
-		 
+
 		setContentView(theViewPager);
 
 		getActionBar().setDisplayHomeAsUpEnabled(true);
- 
+
 		FragmentManager fragManager = getSupportFragmentManager();
 
 		theViewPager.setAdapter(new FragmentStatePagerAdapter(fragManager) {
@@ -44,9 +44,11 @@ public class SpotViewPager extends FragmentActivity {
 			@Override
 			public Fragment getItem(int possition) {
 
-				SpotModel theSpot = spotList.get(possition);
+				// SpotModel theSpot = spotList.get(possition);
 
-				return SpotFragment.newSpotFragment(theSpot.getId());
+				// return SpotFragment.newSpotFragment(theSpot.getId());
+
+				return null;
 			}
 		});
 
@@ -61,8 +63,8 @@ public class SpotViewPager extends FragmentActivity {
 				break;
 			}
 		}
-	}  
-	
+	}
+
 	// Allows using the Application header to navigate back
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

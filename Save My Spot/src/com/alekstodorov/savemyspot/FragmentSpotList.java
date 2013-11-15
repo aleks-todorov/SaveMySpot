@@ -8,18 +8,17 @@ import com.alekstodorov.savemyspot.utils.HelpUtilities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.ListFragment; 
+import android.support.v4.app.ListFragment;
 import android.view.View;
-import android.view.ViewGroup; 
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
- 
 
 public class FragmentSpotList extends ListFragment {
 
 	private ArrayList<SpotModel> spotsList;
-  
+
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
@@ -47,13 +46,19 @@ public class FragmentSpotList extends ListFragment {
 	public void onListItemClick(ListView listView, View view, int position,
 			long id) {
 
-		SpotModel clieckedSpot = ((SpotAdapter) getListAdapter())
+		SpotModel clickedSpot = ((SpotAdapter) getListAdapter())
 				.getItem(position);
+		//
+		// Intent newIntent = new Intent(getActivity(), SpotViewPager.class);
+		//
+		// newIntent.putExtra(HelpUtilities.SPOT_ID, clickedSpot.getId());
+		//
+		// startActivity(newIntent);
 
-		Intent newIntent = new Intent(getActivity(), SpotViewPager.class);
-
-		newIntent.putExtra(HelpUtilities.SPOT_ID, clieckedSpot.getId());
-
+		Intent newIntent = new Intent(getActivity(), ListItemActivity.class);
+		
+		newIntent.putExtra(HelpUtilities.SPOT_ID, clickedSpot.getId());
+	 
 		startActivity(newIntent);
 	}
 
@@ -85,15 +90,10 @@ public class FragmentSpotList extends ListFragment {
 					.findViewById(R.id.spot_title);
 
 			contactTitleTextView.setText(theSpot.getTitle());
-
-			TextView descriptionTextView = (TextView) convertView
-					.findViewById(R.id.spot_description);
-
-			descriptionTextView.setText(theSpot.getDescription());
-
+ 
 			// Return the finished list item for display
 
 			return convertView;
 		}
-	} 
+	}
 }

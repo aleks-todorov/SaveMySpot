@@ -31,7 +31,7 @@ public abstract class FragmentActivityBuilder extends FragmentActivity {
 		// id we refer to
 
 		Fragment theFragment = fragManager
-				.findFragmentById(R.id.fragmentContainer);
+				.findFragmentById(R.id.spotsListContainer);
 
 		// Check if the Fragment was found
 
@@ -54,7 +54,7 @@ public abstract class FragmentActivityBuilder extends FragmentActivity {
 			// the Fragment itself.
 
 			fragManager.beginTransaction()
-					.add(R.id.fragmentContainer, theFragment).commit();
+					.add(R.id.spotsListContainer, theFragment).commit();
 		}
 	}
 

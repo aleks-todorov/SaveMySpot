@@ -4,7 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class HelpUtilities {
+public class HelpUtilities  {
 	
 	public static final String TAG = "SaveMySpotTag";
 	public static final String SPOT_ID = "com.alekstodorov.savemyspot.spotId";
@@ -12,6 +12,7 @@ public class HelpUtilities {
 	public static final int MENU_DELETE_ID = 1002;
 	private static final String USERNAME_AVAILABLE_SYMBOLS = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890_.";
 	private static final String PASSWORD_AVAILABLE_SYMBOLS = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890_.!@$";
+	private static final String TITLE_AVAILABLE_SYMBOLS = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890_-.!@$? ";
 
 	private static String convertToHex(byte[] data) {
 		StringBuilder buf = new StringBuilder();
@@ -39,7 +40,7 @@ public class HelpUtilities {
 			throws SecurityException {
 
 		if (username.length() < 5 || username.length() > 15) {
-
+ 
 			throw new SecurityException(
 					"Username must be between 5 and 15 symbols!");
 		}
@@ -74,5 +75,26 @@ public class HelpUtilities {
 						"Password contains invalid symbols!");
 			}
 		} 
+	}
+	
+	public static void validateTitle(String title)
+			throws SecurityException {
+
+		if (title.length() < 5 || title.length() > 35) {
+ 
+			throw new SecurityException(
+					"Title must be between 5 and 35 symbols!");
+		}
+
+		for (int i = 0; i < title.length(); i++) {
+
+			String ch = Character.toString(title.charAt(i));
+
+			if (!TITLE_AVAILABLE_SYMBOLS.contains(ch)) {
+
+				throw new SecurityException(
+						"Title contains invalid symbols!");
+			}
+		}
 	}
 }

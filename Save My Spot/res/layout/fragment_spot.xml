@@ -1,107 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:name="com.google.android.gms.maps.MapFragment"
+ <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/background" >
+    android:layout_height="match_parent" >
 
-    <TableRow
-        android:id="@+id/tableRow1"
+    <fragment
+        android:id="@+id/spotMap"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="match_parent"
+        class="com.google.android.gms.maps.MapFragment" />
 
-        <TextView
-            android:id="@+id/titleTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/activity_padding"
-            android:text="@string/app_name"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRow2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/descriptionTextView"
-            android:layout_width="wrap_content"
-            android:padding="@dimen/activity_padding"
-            android:text="@string/intro_text" />
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRow3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/longitudeTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_margin"
-            android:layout_weight="1"
-            android:padding="@dimen/activity_padding"
-            android:text="@string/list_item_longitude" />
-
-        <TextView
-            android:id="@+id/longitudeValueTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_margin"
-            android:layout_weight="1"
-            android:padding="@dimen/activity_padding"
-            android:text="@string/app_name" />
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRow4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/latitudeTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_margin"
-            android:layout_weight="1"
-            android:padding="@dimen/activity_padding"
-            android:text="@string/list_item_latitude" />
-
-        <TextView
-            android:id="@+id/latitudeValueTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_margin"
-            android:layout_weight="1"
-            android:padding="@dimen/activity_padding"
-            android:text="@string/app_name" />
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRow5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <Button
-            android:id="@+id/delete_item_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/list_item_delete_btn" />
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRow6"
-        android:layout_width="match_parent"
-        android:layout_height="50dp" >
-
-        <fragment
-            android:id="@+id/mapContainer"
-            android:name="com.google.android.gms.maps.MapFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </TableRow>
-
-</TableLayout>
+</RelativeLayout>
