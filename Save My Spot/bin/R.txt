@@ -150,6 +150,8 @@ int string currently_logged_user 0x7f060024
 int string enter_btn 0x7f060023
 int string exception_already_exists 0x7f06003a
 int string exception_incorect_username_or_password 0x7f060038
+int string exception_invalid_password 0x7f06003c
+int string exception_null_username_or_password 0x7f06003d
 int string exception_user_not_exists 0x7f060039
 int string exception_username_length 0x7f06003b
 int string fragment_spots_list_title 0x7f06002b

@@ -3,13 +3,16 @@ package com.alekstodorov.savemyspot;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 
+import com.alekstodorov.savemyspot.data.IReadable;
+import com.alekstodorov.savemyspot.data.IUowData;
+import com.alekstodorov.savemyspot.data.UowData;
+import com.alekstodorov.savemyspot.data.UsersDatasource;
 import com.alekstodorov.savemyspot.models.UserModel;
-import com.alekstodorov.savemyspot.utils.DbTools;
 import com.alekstodorov.savemyspot.utils.HelpUtilities;
 
-import android.os.Bundle; 
+import android.os.Bundle;
 import android.app.Activity;
-import android.content.Intent;
+import android.content.Intent; 
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,27 +20,33 @@ import android.widget.TextView;
 
 public class LoginRegisterActivity extends Activity {
 
-	DbTools dbTools = new DbTools(this);
-	EditText userNameEditText;
-	EditText passwordEditText;
-	TextView errorNotificationTextView;
-	TextView loggedUsername;
+	private IUowData uowData;
+	private UsersDatasource usersDatasourse;
+	private EditText userNameEditText;
+	private EditText passwordEditText;
+	private TextView errorNotificationTextView;
+	private TextView loggedUsername;
+
 	Button loginButton;
 	Button registerButton;
-	Button logoffButton;
 	Button enterButton;
+	Button logoffButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
 
+		uowData = new UowData(this); 
+		((IReadable) uowData).open(); 
+		usersDatasourse = (UsersDatasource) uowData.getUsers();
+		 
 		decideLayoutModel();
 	}
 
 	private void decideLayoutModel() {
 
-		UserModel loggedUser = dbTools.getLoggedUser();
+		UserModel loggedUser = usersDatasourse.getLoggedUser();
 
 		if (loggedUser != null) {
 
@@ -45,8 +54,12 @@ public class LoginRegisterActivity extends Activity {
 
 			initEnterComponents();
 
-			loggedUsername.setText("Currently loged in user: "
-					+ loggedUser.getUsername());
+			loggedUsername.setText(getResources().getString(
+					R.string.currently_logged_user)
+					+ " " + loggedUser.getUsername());
+
+			enterButton = (Button) findViewById(R.id.enterButton);
+			logoffButton = (Button) findViewById(R.id.logoffButton);
 
 		} else {
 			setContentView(R.layout.activity_login_register);
@@ -65,8 +78,6 @@ public class LoginRegisterActivity extends Activity {
 
 	private void initEnterComponents() {
 		loggedUsername = (TextView) findViewById(R.id.logedUserInfoTextView);
-		logoffButton = (Button) findViewById(R.id.logoffButton);
-		enterButton = (Button) findViewById(R.id.enterButton);
 	}
 
 	public void loginUserButtonClicked(View view) {
@@ -74,27 +85,44 @@ public class LoginRegisterActivity extends Activity {
 		clearErrorMessage();
 
 		UserModel user = new UserModel();
+		try {
 
-		user = getInfoFromEditFields();
+			user = getInfoFromEditFields();
 
-		UserModel existingUser = dbTools.getUserInfo(user.getUsername());
+			UserModel existingUser = usersDatasourse.findByName(user
+					.getUsername());
 
-		if (existingUser != null) {
+			if (existingUser != null) {
 
-			if (user.getPassword().equals(existingUser.getPassword())) {
+				if (user.getPassword().equals(existingUser.getPassword())) {
 
-				user.setLoggedIn(true);
+					user.setLoggedIn(true);
 
-				dbTools.updateContact(user);
+					usersDatasourse.updateContact(user);
 
-				navigateIntoApp();
+					navigateIntoApp();
 
+				} else {
+					errorNotificationTextView.setText(getResources().getString(
+							R.string.exception_incorect_username_or_password));
+				}
 			} else {
-				errorNotificationTextView
-						.setText(getResources().getString(R.string.exception_incorect_username_or_password)); 
+				errorNotificationTextView.setText(getResources().getString(
+						R.string.exception_user_not_exists));
 			}
-		} else {
-			errorNotificationTextView.setText(getResources().getString(R.string.exception_user_not_exists)); 
+		} catch (NoSuchAlgorithmException e) {
+			errorNotificationTextView.setText(getResources().getString(
+					R.string.exception_invalid_password));
+
+			clearPasswordField();
+		} catch (UnsupportedEncodingException e) {
+			errorNotificationTextView.setText(getResources().getString(
+					R.string.exception_invalid_password));
+			clearPasswordField();
+
+		} catch (SecurityException e) {
+			errorNotificationTextView.setText(e.getMessage());
+			clearPasswordField();
 		}
 	}
 
@@ -108,24 +136,41 @@ public class LoginRegisterActivity extends Activity {
 
 	public void registerUserButtonClicked(View view) {
 		clearErrorMessage();
-		getInfoFromEditFields();
 
 		UserModel user = new UserModel();
+		try {
 
-		user = getInfoFromEditFields();
+			user = getInfoFromEditFields();
 
-		UserModel existingUser = dbTools.getUserInfo(user.getUsername());
+			UserModel existingUser = usersDatasourse.findByName(user
+					.getUsername());
 
-		if (existingUser == null) {
+			if (existingUser == null) {
 
-			user.setLoggedIn(true);
+				user.setLoggedIn(true);
 
-			dbTools.insertUser(user);
+				usersDatasourse.create(user);
 
-			navigateIntoApp();
+				navigateIntoApp();
 
-		} else {
-			errorNotificationTextView.setText(getResources().getString(R.string.exception_already_exists)); 
+			} else {
+				errorNotificationTextView.setText(getResources().getString(
+						R.string.exception_already_exists));
+			}
+
+		} catch (NoSuchAlgorithmException e) {
+			errorNotificationTextView.setText(getResources().getString(
+					R.string.exception_invalid_password));
+
+			clearPasswordField();
+		} catch (UnsupportedEncodingException e) {
+			errorNotificationTextView.setText(getResources().getString(
+					R.string.exception_invalid_password));
+			clearPasswordField();
+
+		} catch (SecurityException e) {
+			errorNotificationTextView.setText(e.getMessage());
+			clearPasswordField();
 		}
 	}
 
@@ -136,16 +181,17 @@ public class LoginRegisterActivity extends Activity {
 
 	public void logOffButtonClicked(View view) {
 
-		UserModel loggedUser = dbTools.getLoggedUser();
+		UserModel loggedUser = usersDatasourse.getLoggedUser();
 
 		loggedUser.setLoggedIn(false);
 
-		dbTools.updateContact(loggedUser);
+		usersDatasourse.updateContact(loggedUser);
 
 		decideLayoutModel();
 	}
 
-	private UserModel getInfoFromEditFields() {
+	private UserModel getInfoFromEditFields() throws NoSuchAlgorithmException,
+			UnsupportedEncodingException {
 
 		UserModel user = new UserModel();
 
@@ -153,34 +199,15 @@ public class LoginRegisterActivity extends Activity {
 		String password = passwordEditText.getText().toString();
 		String encodedPassword = null;
 
-		try {
-			HelpUtilities.validateUsername(userName);
-			HelpUtilities.validatePassword(password);
+		HelpUtilities.validateUsername(userName);
+		HelpUtilities.validatePassword(password);
 
-			try {
-				encodedPassword = HelpUtilities.encodePassword(password);
- 
-				user.setUsername(userName);
-				user.setPassword(encodedPassword);
+		encodedPassword = HelpUtilities.encodePassword(password);
 
-				return user;
+		user.setUsername(userName);
+		user.setPassword(encodedPassword);
 
-			} catch (NoSuchAlgorithmException e) {
-				errorNotificationTextView.setText("Invalid Password");
-
-				clearPasswordField();
-			} catch (UnsupportedEncodingException e) {
-				errorNotificationTextView.setText("Invalid Password");
-
-				clearPasswordField();
-			}
-		} catch (SecurityException e) {
-			errorNotificationTextView.setText(e.getMessage());
-
-			clearPasswordField();
-		}
-
-		return null;
+		return user;
 	}
 
 	private void clearPasswordField() {
@@ -189,5 +216,21 @@ public class LoginRegisterActivity extends Activity {
 
 	private void clearErrorMessage() {
 		errorNotificationTextView.setText("");
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		if (uowData instanceof IReadable) {
+			((IReadable) uowData).open();
+		}
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		if (uowData instanceof IReadable) {
+			((IReadable) uowData).close();
+		}
 	}
 }

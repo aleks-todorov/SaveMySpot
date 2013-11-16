@@ -1,7 +1,10 @@
 package com.alekstodorov.savemyspot;
 
-import com.alekstodorov.savemyspot.models.SpotModel;
-import com.alekstodorov.savemyspot.utils.AllSpots; 
+import com.alekstodorov.savemyspot.data.IReadable;
+import com.alekstodorov.savemyspot.data.IUowData;
+import com.alekstodorov.savemyspot.data.SpotsDatasource;
+import com.alekstodorov.savemyspot.data.UowData;
+import com.alekstodorov.savemyspot.models.SpotModel; 
 import com.alekstodorov.savemyspot.utils.GPSTracker;
 import com.alekstodorov.savemyspot.utils.HelpUtilities;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -15,7 +18,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent; 
+import android.content.Intent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,9 +26,10 @@ import android.widget.Button;
 
 public class ListItemActivity extends Activity {
 
+	private IUowData uowData;
 	private Button deleteButton;
 	private SpotModel theSpot;
-	  
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -35,9 +39,12 @@ public class ListItemActivity extends Activity {
 
 		Intent intent = getIntent();
 
+		uowData = new UowData(this);
+		((IReadable) uowData).open();
+
 		Long spotId = intent.getLongExtra(HelpUtilities.SPOT_ID, 0);
 
-		theSpot = AllSpots.get(this).getSpot(spotId);
+		theSpot = uowData.getSpots().findById(spotId);
 
 		setTitle(theSpot.getTitle());
 
@@ -64,9 +71,12 @@ public class ListItemActivity extends Activity {
 							public void onClick(DialogInterface dialog,
 									int which) {
 
-								int id = (int) theSpot.getId();
+								long id = theSpot.getId();
 
-								AllSpots.removeSpot(id);
+								SpotsDatasource spotDatasource = (SpotsDatasource) uowData
+										.getSpots();
+								
+								spotDatasource.delete(id);
 
 								Intent intent = new Intent(
 										ListItemActivity.this,
@@ -135,5 +145,21 @@ public class ListItemActivity extends Activity {
 		}
 
 		return true;
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		if (uowData instanceof IReadable) {
+			((IReadable) uowData).open();
+		}
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		if (uowData instanceof IReadable) {
+			((IReadable) uowData).close();
+		}
 	}
 }

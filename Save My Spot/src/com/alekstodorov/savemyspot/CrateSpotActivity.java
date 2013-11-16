@@ -1,7 +1,8 @@
-package com.alekstodorov.savemyspot;
-
-import com.alekstodorov.savemyspot.models.SpotModel;
-import com.alekstodorov.savemyspot.utils.AllSpots;
+package com.alekstodorov.savemyspot; 
+import com.alekstodorov.savemyspot.data.IReadable;
+import com.alekstodorov.savemyspot.data.IUowData; 
+import com.alekstodorov.savemyspot.data.UowData;
+import com.alekstodorov.savemyspot.models.SpotModel; 
 import com.alekstodorov.savemyspot.utils.GPSTracker;
 import com.alekstodorov.savemyspot.utils.HelpUtilities;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -13,7 +14,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle; 
+import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,6 +24,7 @@ import android.widget.TextView;
 
 public class CrateSpotActivity extends Activity {
 
+	private IUowData uowData; 
 	private double latitude;
 	private double longitude;
 	EditText spotTitle;
@@ -37,8 +39,9 @@ public class CrateSpotActivity extends Activity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		initComponents();
 
+		uowData = new UowData(this);
+		((IReadable) uowData).open();
 		setMapOnCurrentPossition();
-
 	}
 
 	private void setMapOnCurrentPossition() {
@@ -69,14 +72,14 @@ public class CrateSpotActivity extends Activity {
 	public void saveAndReturn() {
 
 		String title = spotTitle.getText().toString();
-		   
-			SpotModel theSpot = new SpotModel(13, title, latitude, longitude);
 
-			AllSpots.addSpot(theSpot);
- 
-			Intent intent = new Intent(this, SpotListviewActivity.class);
-			
-		    startActivity(intent); 
+		SpotModel theSpot = new SpotModel(title, latitude, longitude);
+
+		uowData.getSpots().create(theSpot);
+
+		Intent intent = new Intent(this, SpotListviewActivity.class);
+
+		startActivity(intent);
 	}
 
 	private void initComponents() {
@@ -90,7 +93,7 @@ public class CrateSpotActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				clearErrorField();
-				
+
 				String title = spotTitle.getText().toString();
 
 				try {
@@ -103,11 +106,11 @@ public class CrateSpotActivity extends Activity {
 			}
 		});
 	}
-	
-	private void clearErrorField(){ 
+
+	private void clearErrorField() {
 		errorTextView.setText("");
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
@@ -124,4 +127,19 @@ public class CrateSpotActivity extends Activity {
 		return true;
 	}
 
+	@Override
+	protected void onResume() {
+		super.onResume();
+		if (uowData instanceof IReadable) {
+			((IReadable) uowData).open();
+		}
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		if (uowData instanceof IReadable) {
+			((IReadable) uowData).close();
+		}
+	}
 }

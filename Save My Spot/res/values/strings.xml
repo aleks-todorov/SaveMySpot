@@ -31,9 +31,12 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_list_item">ListItemActivity</string>
+    <string name="currently_logged_user">Currently loged in user: </string>
     <string name="exception_incorect_username_or_password">Username or password is incorect!</string>
     <string name="exception_user_not_exists">User does not exists!</string>
     <string name="exception_already_exists">User already exists!</string>
     <string name="exception_username_length">Username must be between 5 and 15 symbols!</string>
+    <string name="exception_invalid_password">Invalid Password</string>
+    <string name="exception_null_username_or_password">Username or Password cannot be empty!</string>
 
 </resources>

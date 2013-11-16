@@ -378,6 +378,8 @@ containing a value of this type.
         public static final int enter_btn=0x7f060023;
         public static final int exception_already_exists=0x7f06003a;
         public static final int exception_incorect_username_or_password=0x7f060038;
+        public static final int exception_invalid_password=0x7f06003c;
+        public static final int exception_null_username_or_password=0x7f06003d;
         public static final int exception_user_not_exists=0x7f060039;
         public static final int exception_username_length=0x7f06003b;
         public static final int fragment_spots_list_title=0x7f06002b;

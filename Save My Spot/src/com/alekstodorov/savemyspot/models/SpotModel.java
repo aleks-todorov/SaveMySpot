@@ -11,10 +11,9 @@ public class SpotModel {
 		
 	}
 
-	public SpotModel(long id, String title,
+	public SpotModel(String title,
 			double latitute, double longitude) {
-		super();
-		this.id = id;
+		super(); 
 		this.title = title; 
 		this.latitute = latitute;
 		this.longitude = longitude;
