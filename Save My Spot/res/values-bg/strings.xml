@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SaveMySpot</string>
+    <string name="action_settings">Настройки</string>
+    <string name="intro_wellcome">Здравейте, </string>
+    <string name="intro_text">SaveMySpot е програма, която ще Ви помогне да запазите, запомните и намирате важни за вас места, като местоположението на хотела Ви в някой непознат град, или онзи магази в който си харесахте точно онова което искахте, но нямахте пари и решихте да го оставите за след заплата, и много, много други&#8230;  </string>
+    <string name="login_text">За да продължите, моля логнете се </string>
+    <string name="user_name">Въведете потребителски име</string>
+    <string name="password">Въведете парола</string>
+    <string name="login_btn">Логни се </string>
+    <string name="register_btn">Регистрация </string>
+    <string name="enter_btn">Влез </string>
+    <string name="currently_logged_user">Настоящ логнат потребител:   </string>
+    <string name="log_off_btn">Разлогни се </string>
+    <string name="action_create_save">Създай</string>
+    <string name="action_create_title_edit_text">Въведете заглавие</string>
+    <string name="invalid_password">Неправилна парола! Моля опитайте пак!</string>
+    <string name="invalid_username_lenght">Потребителското име трябва да бъде между 5 и 15 символа!</string>
+    <string name="invalid_username_symbols">Потребителското име съдържа непозволени символи</string>
+    <string name="fragment_spots_list_title">Моите места</string>
+    <string name="list_item_spot_title">Заглавие:</string>
+    <string name="list_item_longitude">Географска дължина:</string>
+    <string name="list_item_latitude">Географска широчина:</string>
+    <string name="list_item_delete_btn">Изтрий</string>
+    <string name="create_item_title">Въведете заглавие</string>
+    <string name="create_item_create_btn">Създай</string>
+    <string name="create_item_page_title">Добави ново място</string>
+    <string name="exception_incorect_username_or_password">Паролата или потребителското име не е коректни!</string>
+    <string name="exception_user_not_exists">Няма такъв потребител!</string>
+    <string name="exception_already_exists">Този потребител вече съществува!</string>
+    <string name="exception_username_length">Потребителското име трябва да бъде между 5 и 15 символа!</string>
+    <string name="exception_invalid_password">Неправилна парола</string>
+    <string name="exception_null_username_or_password">Паролата и потребителското име не може да бъдат празни</string>
+    <string name="delete_item_alert_title">Изтриване на елемент </string>
+    <string name="delete_item_alert_question">Сигурни ли сте, че искате да го изтриете ?</string>
+    <string name="delete_item_alert_yes">Да </string>
+    <string name="delete_item_alert_no">Не </string>
+    <string name="map_current_possition">Вие сте тук </string>
+
+</resources>

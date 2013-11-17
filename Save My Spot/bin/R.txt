@@ -147,6 +147,10 @@ int string create_item_description 0x7f060032
 int string create_item_page_title 0x7f060034
 int string create_item_title 0x7f060031
 int string currently_logged_user 0x7f060024
+int string delete_item_alert_no 0x7f060041
+int string delete_item_alert_question 0x7f06003f
+int string delete_item_alert_title 0x7f06003e
+int string delete_item_alert_yes 0x7f060040
 int string enter_btn 0x7f060023
 int string exception_already_exists 0x7f06003a
 int string exception_incorect_username_or_password 0x7f060038
@@ -169,6 +173,7 @@ int string list_item_spot_title 0x7f06002c
 int string log_off_btn 0x7f060025
 int string login_btn 0x7f060021
 int string login_text 0x7f06001e
+int string map_current_possition 0x7f060042
 int string password 0x7f060020
 int string register_btn 0x7f060022
 int string title_activity_list_item 0x7f060037

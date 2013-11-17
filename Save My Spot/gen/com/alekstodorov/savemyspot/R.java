@@ -382,6 +382,10 @@ containing a value of this type.
         public static final int create_item_page_title=0x7f060034;
         public static final int create_item_title=0x7f060031;
         public static final int currently_logged_user=0x7f060024;
+        public static final int delete_item_alert_no=0x7f060041;
+        public static final int delete_item_alert_question=0x7f06003f;
+        public static final int delete_item_alert_title=0x7f06003e;
+        public static final int delete_item_alert_yes=0x7f060040;
         public static final int enter_btn=0x7f060023;
         public static final int exception_already_exists=0x7f06003a;
         public static final int exception_incorect_username_or_password=0x7f060038;
@@ -404,6 +408,7 @@ containing a value of this type.
         public static final int log_off_btn=0x7f060025;
         public static final int login_btn=0x7f060021;
         public static final int login_text=0x7f06001e;
+        public static final int map_current_possition=0x7f060042;
         public static final int password=0x7f060020;
         public static final int register_btn=0x7f060022;
         public static final int title_activity_list_item=0x7f060037;

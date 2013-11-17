@@ -53,11 +53,9 @@
         <activity android:name="com.alekstodorov.savemyspot.SpotViewPager" >
         </activity>
         <activity android:name="com.alekstodorov.savemyspot.CrateSpotActivity" >
-        </activity>
-        <activity
-            android:name="com.alekstodorov.savemyspot.ListItemActivity"
-            android:label="@string/title_activity_list_item" >
-        </activity>
+        </activity> 
+         <activity android:name="com.alekstodorov.savemyspot.ListItemActivity" >
+        </activity> 
     </application>
 
 </manifest>

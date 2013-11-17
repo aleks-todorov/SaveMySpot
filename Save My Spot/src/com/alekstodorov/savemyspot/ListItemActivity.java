@@ -58,12 +58,12 @@ public class ListItemActivity extends Activity {
 				AlertDialog.Builder alertDialog = new AlertDialog.Builder(
 						ListItemActivity.this);
  
-				alertDialog.setTitle("Delete list item");
+				alertDialog.setTitle(getResources().getString(R.string.delete_item_alert_title));
  
 				alertDialog
-						.setMessage("Are you sure that you want to delete this item?");
+						.setMessage(getResources().getString(R.string.delete_item_alert_question));
  
-				alertDialog.setPositiveButton("Yes",
+				alertDialog.setPositiveButton(getResources().getString(R.string.delete_item_alert_yes),
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog,
 									int which) {
@@ -83,7 +83,7 @@ public class ListItemActivity extends Activity {
 							}
 						});
 
-				alertDialog.setNegativeButton("No",
+				alertDialog.setNegativeButton(getResources().getString(R.string.delete_item_alert_no),
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog,
 									int which) {
@@ -106,9 +106,7 @@ public class ListItemActivity extends Activity {
 			map.moveCamera(CameraUpdateFactory.newLatLngZoom(
 					new LatLng(theSpot.getLatitute(), theSpot.getLongitude()),
 					17));
-
-			// You can customize the marker image using images bundled with
-			// your app, or dynamically generated bitmaps.
+ 
 			map.addMarker(new MarkerOptions()
 					.anchor(0.0f, 1.0f)
 					.icon(BitmapDescriptorFactory
@@ -125,7 +123,7 @@ public class ListItemActivity extends Activity {
 					// Anchors the marker on the bottom left
 					.icon(BitmapDescriptorFactory
 							.fromResource(R.drawable.current_possition))
-					.title("You are here")
+					.title(getResources().getString(R.string.map_current_possition))
 					.position(new LatLng(currentLatitue, currentLongitude)));
 			tracker.stopUsingGPS();
 		} else {
