@@ -19,6 +19,7 @@
             android:paddingLeft="@dimen/activity_padding"
             android:text="@string/intro_wellcome"
             android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="@dimen/activity_text_size"
             android:textStyle="italic" />
     </TableRow>
 
@@ -35,6 +36,7 @@
             android:padding="@dimen/activity_padding"
             android:text="@string/intro_text"
             android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="@dimen/activity_text_size"
             android:textStyle="italic" />
     </TableRow>
 
@@ -47,12 +49,13 @@
             android:id="@+id/loginInfoTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/activity_padding" 
+            android:padding="@dimen/activity_padding"
             android:text="@string/login_text"
+            android:textSize="@dimen/activity_text_size"
             android:textStyle="bold" />
     </TableRow>
-    
-     <TableRow
+
+    <TableRow
         android:id="@+id/tableRow4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
@@ -62,9 +65,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/activity_padding"
-            android:textColor="@color/red" />
+            android:textColor="@color/red"
+            android:textSize="@dimen/activity_text_size" />
     </TableRow>
-     
+
     <TableRow
         android:id="@+id/tableRow5"
         android:layout_width="wrap_content"
@@ -76,18 +80,20 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/activity_margin"
             android:layout_weight="1"
-            android:ems="5"
+            android:ems="10"
             android:hint="@string/user_name"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textSize="@dimen/activity_text_size" />
 
         <EditText
             android:id="@+id/passwordEditText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:ems="5"
+            android:ems="10"
             android:hint="@string/password"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textSize="@dimen/activity_text_size" />
     </TableRow>
 
     <TableRow
@@ -100,16 +106,18 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="loginUser"
-            android:text="@string/login_btn" />
+            android:onClick="loginUserButtonClicked"
+            android:text="@string/login_btn"
+            android:textSize="@dimen/activity_text_size" />
 
         <Button
             android:id="@+id/registerButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="registerUser"
-            android:text="@string/register_btn" />
-    </TableRow> 
-    
+            android:onClick="registerUserButtonClicked"
+            android:text="@string/register_btn"
+            android:textSize="@dimen/activity_text_size" />
+    </TableRow>
+
 </TableLayout>

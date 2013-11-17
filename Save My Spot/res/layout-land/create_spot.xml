@@ -12,13 +12,14 @@
         android:id="@+id/createSpotErrorTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true" 
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/createSpotTitle" 
         android:textColor="@color/red" />
 
     <EditText
         android:id="@+id/createSpotTitle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="wrap_content" 
         android:layout_below="@+id/createSpotErrorTextView"
         android:layout_marginBottom="@dimen/activity_margin"
         android:ems="10"

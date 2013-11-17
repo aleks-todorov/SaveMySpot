@@ -169,17 +169,25 @@ containing a value of this type.
         public static final int red=0x7f04000b;
     }
     public static final class dimen {
-        /** 
-         Customize dimensions originally defined in res/values/dimens.xml (such as
-         screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
-    
-         */
-        public static final int activity_horizontal_margin=0x7f080002;
+        public static final int activity_horizontal_margin=0x7f080003;
         /**  Default screen margins, per the Android Design guidelines. 
+
+         Customize dimensions originally defined in res/values/dimens.xml (such as
+         screen margins) for sw600dp devices (e.g. 7" tablets) here.
+    
+
+         Customize dimensions originally defined in res/values/dimens.xml (such as
+         screen margins) for sw600dp devices (e.g. 7" tablets) here.
+    
+
+         Customize dimensions originally defined in res/values/dimens.xml (such as
+         screen margins) for sw600dp devices (e.g. 7" tablets) here.
+    
          */
         public static final int activity_margin=0x7f080000;
         public static final int activity_padding=0x7f080001;
-        public static final int activity_vertical_margin=0x7f080003;
+        public static final int activity_text_size=0x7f080002;
+        public static final int activity_vertical_margin=0x7f080004;
     }
     public static final class drawable {
         public static final int background=0x7f020000;
@@ -262,9 +270,8 @@ containing a value of this type.
         public static final int activity_login_register=0x7f030001;
         public static final int create_spot=0x7f030002;
         public static final int enter_layout=0x7f030003;
-        public static final int fragment_spot=0x7f030004;
-        public static final int list_item_spot=0x7f030005;
-        public static final int spots_listview_activity=0x7f030006;
+        public static final int list_item_spot=0x7f030004;
+        public static final int spots_listview_activity=0x7f030005;
     }
     public static final class menu {
         public static final int list_item=0x7f0a0000;

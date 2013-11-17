@@ -4,7 +4,7 @@ import com.alekstodorov.savemyspot.data.IReadable;
 import com.alekstodorov.savemyspot.data.IUowData;
 import com.alekstodorov.savemyspot.data.SpotsDatasource;
 import com.alekstodorov.savemyspot.data.UowData;
-import com.alekstodorov.savemyspot.models.SpotModel; 
+import com.alekstodorov.savemyspot.models.SpotModel;
 import com.alekstodorov.savemyspot.utils.GPSTracker;
 import com.alekstodorov.savemyspot.utils.HelpUtilities;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -57,15 +57,12 @@ public class ListItemActivity extends Activity {
 
 				AlertDialog.Builder alertDialog = new AlertDialog.Builder(
 						ListItemActivity.this);
-
-				// Setting Dialog Title
+ 
 				alertDialog.setTitle("Delete list item");
-
-				// Setting Dialog Message
+ 
 				alertDialog
 						.setMessage("Are you sure that you want to delete this item?");
-
-				// On pressing Settings button
+ 
 				alertDialog.setPositiveButton("Yes",
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog,
@@ -75,7 +72,7 @@ public class ListItemActivity extends Activity {
 
 								SpotsDatasource spotDatasource = (SpotsDatasource) uowData
 										.getSpots();
-								
+
 								spotDatasource.delete(id);
 
 								Intent intent = new Intent(
@@ -99,35 +96,41 @@ public class ListItemActivity extends Activity {
 			}
 		});
 
-		GoogleMap map = ((MapFragment) getFragmentManager().findFragmentById(
-				R.id.spotMap)).getMap();
-
-		map.moveCamera(CameraUpdateFactory.newLatLngZoom(
-				new LatLng(theSpot.getLatitute(), theSpot.getLongitude()), 17));
-
-		// You can customize the marker image using images bundled with
-		// your app, or dynamically generated bitmaps.
-		map.addMarker(new MarkerOptions()
-				.anchor(0.0f, 1.0f)
-				.icon(BitmapDescriptorFactory
-						.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET))
-				.position(
-						new LatLng(theSpot.getLatitute(), theSpot
-								.getLongitude())));
-
 		// Marker showing current possition
 		GPSTracker tracker = new GPSTracker(this);
+		if (tracker.canGetLocation() == true) {
 
-		double currentLatitue = tracker.getLatitude();
-		double currentLongitude = tracker.getLongitude();
+			GoogleMap map = ((MapFragment) getFragmentManager()
+					.findFragmentById(R.id.spotMap)).getMap();
 
-		map.addMarker(new MarkerOptions()
-				.anchor(0.0f, 1.0f)
-				// Anchors the marker on the bottom left
-				.icon(BitmapDescriptorFactory
-						.fromResource(R.drawable.current_possition))
-				.title("You are here")
-				.position(new LatLng(currentLatitue, currentLongitude)));
+			map.moveCamera(CameraUpdateFactory.newLatLngZoom(
+					new LatLng(theSpot.getLatitute(), theSpot.getLongitude()),
+					17));
+
+			// You can customize the marker image using images bundled with
+			// your app, or dynamically generated bitmaps.
+			map.addMarker(new MarkerOptions()
+					.anchor(0.0f, 1.0f)
+					.icon(BitmapDescriptorFactory
+							.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET))
+					.position(
+							new LatLng(theSpot.getLatitute(), theSpot
+									.getLongitude())));
+
+			double currentLatitue = tracker.getLatitude();
+			double currentLongitude = tracker.getLongitude();
+
+			map.addMarker(new MarkerOptions()
+					.anchor(0.0f, 1.0f)
+					// Anchors the marker on the bottom left
+					.icon(BitmapDescriptorFactory
+							.fromResource(R.drawable.current_possition))
+					.title("You are here")
+					.position(new LatLng(currentLatitue, currentLongitude)));
+			tracker.stopUsingGPS();
+		} else {
+			tracker.showSettingsAlert(); 
+		}
 	}
 
 	// Allows using the Application header to navigate back

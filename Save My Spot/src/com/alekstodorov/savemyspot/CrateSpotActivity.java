@@ -1,8 +1,9 @@
-package com.alekstodorov.savemyspot; 
+package com.alekstodorov.savemyspot;
+
 import com.alekstodorov.savemyspot.data.IReadable;
-import com.alekstodorov.savemyspot.data.IUowData; 
+import com.alekstodorov.savemyspot.data.IUowData;
 import com.alekstodorov.savemyspot.data.UowData;
-import com.alekstodorov.savemyspot.models.SpotModel; 
+import com.alekstodorov.savemyspot.models.SpotModel;
 import com.alekstodorov.savemyspot.utils.GPSTracker;
 import com.alekstodorov.savemyspot.utils.HelpUtilities;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -24,7 +25,7 @@ import android.widget.TextView;
 
 public class CrateSpotActivity extends Activity {
 
-	private IUowData uowData; 
+	private IUowData uowData;
 	private double latitude;
 	private double longitude;
 	EditText spotTitle;
@@ -49,24 +50,30 @@ public class CrateSpotActivity extends Activity {
 				R.id.createSpotMap)).getMap();
 		GPSTracker tracker = new GPSTracker(this);
 
-		latitude = tracker.getLatitude();
-		longitude = tracker.getLongitude();
+		if (tracker.canGetLocation() == true) {
 
-		tracker.stopUsingGPS();
+			latitude = tracker.getLatitude();
+			longitude = tracker.getLongitude();
 
-		map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude,
-				longitude), 17));
+			tracker.stopUsingGPS();
 
-		double currentLatitue = tracker.getLatitude();
-		double currentLongitude = tracker.getLongitude();
+			map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
+					latitude, longitude), 17));
 
-		map.addMarker(new MarkerOptions()
-				.anchor(0.0f, 1.0f)
-				// Anchors the marker on the bottom left
-				.icon(BitmapDescriptorFactory
-						.fromResource(R.drawable.current_possition))
-				.title("You are here")
-				.position(new LatLng(currentLatitue, currentLongitude)));
+			double currentLatitue = tracker.getLatitude();
+			double currentLongitude = tracker.getLongitude();
+
+			map.addMarker(new MarkerOptions()
+					.anchor(0.0f, 1.0f)
+					// Anchors the marker on the bottom left
+					.icon(BitmapDescriptorFactory
+							.fromResource(R.drawable.current_possition))
+					.title("You are here")
+					.position(new LatLng(currentLatitue, currentLongitude)));
+			tracker.stopUsingGPS();
+		} else {
+			tracker.showSettingsAlert(); 
+		}
 	}
 
 	public void saveAndReturn() {
