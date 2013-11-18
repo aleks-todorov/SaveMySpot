@@ -49,6 +49,7 @@
             android:id="@+id/logedUserInfoTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_margin"
             android:layout_weight="1"
             android:padding="@dimen/activity_padding"
             android:text="@string/currently_logged_user"

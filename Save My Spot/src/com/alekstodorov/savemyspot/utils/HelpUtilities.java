@@ -28,7 +28,7 @@ public class HelpUtilities  {
 		return buf.toString();
 	}
 
-	public static String encodePassword(String text)
+	public static String encodeString(String text)
 			throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		MessageDigest md = MessageDigest.getInstance("SHA-1");
 		md.update(text.getBytes("iso-8859-1"), 0, text.length());

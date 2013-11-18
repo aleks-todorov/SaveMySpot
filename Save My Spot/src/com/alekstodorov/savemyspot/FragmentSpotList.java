@@ -51,7 +51,7 @@ public class FragmentSpotList extends ListFragment {
 		SpotModel clickedSpot = ((SpotAdapter) getListAdapter())
 				.getItem(position);
 
-		Intent newIntent = new Intent(getActivity(), ListItemActivity.class);
+		Intent newIntent = new Intent(getActivity(), ViewSpotActivity.class);
 
 		newIntent.putExtra(HelpUtilities.SPOT_ID, clickedSpot.getId());
 
@@ -67,9 +67,7 @@ public class FragmentSpotList extends ListFragment {
 
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
-
-			// Check if this is a recycled list item and if not we inflate it
-
+ 
 			if (convertView == null) {
 
 				convertView = getActivity().getLayoutInflater().inflate(

@@ -31,7 +31,7 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_list_item">ListItemActivity</string>
-    <string name="currently_logged_user">Currently loged in user: </string> 
+    <string name="currently_logged_user">Currently loged in user: </string>
     <string name="exception_incorect_username_or_password">Username or password is incorect!</string>
     <string name="exception_user_not_exists">User does not exists!</string>
     <string name="exception_already_exists">User already exists!</string>
@@ -43,5 +43,12 @@
     <string name="delete_item_alert_yes">Yes </string>
     <string name="delete_item_alert_no">No </string>
     <string name="map_current_possition">You are here </string>
+    <string name="menu_upload">Upload </string>
+    <string name="menu_download">Download </string>
+    <string name="http_error_title">Remote server error </string>
+    <string name="http_error_text">Error occurred, while uploading spot! Please check your internet connection and try again!</string>
+    <string name="http_error_ok">OK</string>
+    <string name="http_error_spots_text">Error occurred, while downloading Spots!  Please check your internet connection and try again!</string>
+     
 
 </resources>

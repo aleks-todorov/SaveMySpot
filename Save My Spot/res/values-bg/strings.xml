@@ -37,5 +37,11 @@
     <string name="delete_item_alert_yes">Да </string>
     <string name="delete_item_alert_no">Не </string>
     <string name="map_current_possition">Вие сте тук </string>
+     <string name="menu_upload">Качи </string>
+    <string name="menu_download">Свали </string>
+    <string name="http_error_title">Грешка при достъпването на сървара </string>
+    <string name="http_error_text">Възникна грешка при качването! Моля проверете интернет връзката и опитайте отново!</string>
+    <string name="http_error_ok">Добре</string>
+    <string name="http_error_spots_text">Възникна грешка при свалянето. Моля проверете интернет връзката и опитайте отново!</string>
 
 </resources>

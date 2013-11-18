@@ -3,6 +3,7 @@ package com.alekstodorov.savemyspot;
 import com.alekstodorov.savemyspot.data.IReadable;
 import com.alekstodorov.savemyspot.data.IUowData;
 import com.alekstodorov.savemyspot.data.UowData;
+import com.alekstodorov.savemyspot.data.UsersDatasource;
 import com.alekstodorov.savemyspot.models.SpotModel;
 import com.alekstodorov.savemyspot.utils.GPSTracker;
 import com.alekstodorov.savemyspot.utils.HelpUtilities;
@@ -72,7 +73,7 @@ public class CrateSpotActivity extends Activity {
 					.position(new LatLng(currentLatitue, currentLongitude)));
 			tracker.stopUsingGPS();
 		} else {
-			tracker.showSettingsAlert(); 
+			tracker.showSettingsAlert();
 		}
 	}
 
@@ -80,7 +81,9 @@ public class CrateSpotActivity extends Activity {
 
 		String title = spotTitle.getText().toString();
 
-		SpotModel theSpot = new SpotModel(title, latitude, longitude);
+		String authCode = ((UsersDatasource) uowData.getUsers()).getLoggedUser()
+				.getAuthCode();
+		SpotModel theSpot = new SpotModel(title, latitude, longitude, authCode);
 
 		uowData.getSpots().create(theSpot);
 

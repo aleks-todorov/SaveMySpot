@@ -12,7 +12,7 @@ import com.alekstodorov.savemyspot.utils.HelpUtilities;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.content.Intent; 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,10 +37,10 @@ public class LoginRegisterActivity extends Activity {
 
 		super.onCreate(savedInstanceState);
 
-		uowData = new UowData(this); 
-		((IReadable) uowData).open(); 
+		uowData = new UowData(this);
+		((IReadable) uowData).open();
 		usersDatasourse = (UsersDatasource) uowData.getUsers();
-		 
+
 		decideLayoutModel();
 	}
 
@@ -202,10 +202,12 @@ public class LoginRegisterActivity extends Activity {
 		HelpUtilities.validateUsername(userName);
 		HelpUtilities.validatePassword(password);
 
-		encodedPassword = HelpUtilities.encodePassword(password);
+		encodedPassword = HelpUtilities.encodeString(password);
+		String authCode = HelpUtilities.encodeString(userName + password);
 
 		user.setUsername(userName);
 		user.setPassword(encodedPassword);
+		user.setAuthCode(authCode);
 
 		return user;
 	}

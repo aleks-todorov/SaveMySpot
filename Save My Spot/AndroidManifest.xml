@@ -49,12 +49,10 @@
             </intent-filter>
         </activity>
         <activity android:name="com.alekstodorov.savemyspot.SpotListviewActivity" >
-        </activity>
-        <activity android:name="com.alekstodorov.savemyspot.SpotViewPager" >
-        </activity>
+        </activity> 
         <activity android:name="com.alekstodorov.savemyspot.CrateSpotActivity" >
         </activity> 
-         <activity android:name="com.alekstodorov.savemyspot.ListItemActivity" >
+         <activity android:name="com.alekstodorov.savemyspot.ViewSpotActivity" >
         </activity> 
     </application>
 

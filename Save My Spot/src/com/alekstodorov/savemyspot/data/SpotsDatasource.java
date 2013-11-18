@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.alekstodorov.savemyspot.models.SpotModel;
 import com.alekstodorov.savemyspot.models.UserModel;
+import com.alekstodorov.savemyspot.utils.AllSpots;
 import com.alekstodorov.savemyspot.utils.HelpUtilities;
 
 import android.content.ContentValues;
@@ -26,13 +27,13 @@ public class SpotsDatasource extends GenericDatasource<SpotModel> {
 	public SpotModel create(SpotModel spot) {
 
 		getLoggedUser();
-		Log.v(HelpUtilities.TAG, loggedUser.getUserId() + " ");
 
 		ContentValues values = new ContentValues();
 
 		values.put(DbTools.TABLE_SPOTS_TITLE, spot.getTitle());
-		values.put(DbTools.TABLE_SPOTS_LATITUDE, spot.getLatitute());
+		values.put(DbTools.TABLE_SPOTS_LATITUDE, spot.getLatitude());
 		values.put(DbTools.TABLE_SPOTS_LONGITUDE, spot.getLongitude());
+		values.put(DbTools.TABLE_SPOTS_AUTHCODE, spot.getAuthCode());
 		values.put(DbTools.TABLE_SPOTS_USERID, loggedUser.getUserId());
 
 		database.insert(DbTools.TABLE_SPOTS, null, values);
@@ -54,7 +55,8 @@ public class SpotsDatasource extends GenericDatasource<SpotModel> {
 
 		ArrayList<SpotModel> spotsList = new ArrayList<SpotModel>();
 
-		String selectQuery = "SELECT * FROM " + DbTools.TABLE_SPOTS + " WHERE "
+		String selectQuery = "SELECT " + DbTools.TABLE_SPOTS_TITLE + "," + DbTools.TABLE_SPOTS_ID 
+				+ "  FROM " + DbTools.TABLE_SPOTS + " WHERE "
 				+ DbTools.TABLE_SPOTS_USERID + " = " + loggedUser.getUserId()
 				+ " ORDER BY " + DbTools.TABLE_SPOTS_ID + " DESC ";
 
@@ -62,11 +64,10 @@ public class SpotsDatasource extends GenericDatasource<SpotModel> {
 
 		if (cursor.moveToFirst()) {
 
-			do {
-
+			do { 
 				SpotModel spot = new SpotModel();
 
-				spot = getSpotInformationFromDb(cursor);
+				spot = getPartialSpotInformationFromDb(cursor);
 
 				spotsList.add(spot);
 
@@ -76,13 +77,23 @@ public class SpotsDatasource extends GenericDatasource<SpotModel> {
 		return spotsList;
 	}
 
+	private SpotModel getPartialSpotInformationFromDb(Cursor cursor) {
+		 
+		SpotModel spot = new SpotModel();
+		spot.setId(cursor.getLong(1));
+		spot.setTitle(cursor.getString(0));
+		  
+		return spot;
+	}
+
 	private SpotModel getSpotInformationFromDb(Cursor cursor) {
 
 		SpotModel spot = new SpotModel();
 		spot.setId(cursor.getLong(0));
 		spot.setTitle(cursor.getString(1));
-		spot.setLatitute(cursor.getDouble(2));
+		spot.setLatitude(cursor.getDouble(2));
 		spot.setLongitude(cursor.getDouble(3));
+		spot.setAuthCode((cursor.getString(5)));
 
 		return spot;
 	}
@@ -100,14 +111,11 @@ public class SpotsDatasource extends GenericDatasource<SpotModel> {
 		if (cursor.moveToFirst()) {
 
 			do {
-
 				spot = getSpotInformationFromDb(cursor);
 
 			} while (cursor.moveToNext());
 		}
 
-		Log.v(HelpUtilities.TAG, spot.getId() + " Spot Id  ");
-	  
 		return spot;
 	}
 
@@ -117,5 +125,15 @@ public class SpotsDatasource extends GenericDatasource<SpotModel> {
 				+ DbTools.TABLE_SPOTS_ID + " = " + id;
 
 		database.execSQL(request);
+	}
+
+	public void seedDatabase(Context context) {
+		AllSpots seedData = AllSpots.get(context);
+		ArrayList<SpotModel> spots = seedData.getSpotsList();
+
+		for (SpotModel spot : spots) {
+
+			create(spot);
+		}
 	}
 }

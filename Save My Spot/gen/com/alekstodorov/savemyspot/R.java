@@ -218,49 +218,53 @@ containing a value of this type.
         public static final int current_possition=0x7f020019;
         public static final int ic_action_action_about=0x7f02001a;
         public static final int ic_action_create=0x7f02001b;
-        public static final int ic_launcher=0x7f02001c;
-        public static final int ic_plusone_medium_off_client=0x7f02001d;
-        public static final int ic_plusone_small_off_client=0x7f02001e;
-        public static final int ic_plusone_standard_off_client=0x7f02001f;
-        public static final int ic_plusone_tall_off_client=0x7f020020;
+        public static final int ic_action_location_server=0x7f02001c;
+        public static final int ic_launcher=0x7f02001d;
+        public static final int ic_plusone_medium_off_client=0x7f02001e;
+        public static final int ic_plusone_small_off_client=0x7f02001f;
+        public static final int ic_plusone_standard_off_client=0x7f020020;
+        public static final int ic_plusone_tall_off_client=0x7f020021;
     }
     public static final class id {
-        public static final int TableLayout1=0x7f050018;
-        public static final int TableLoginLayout=0x7f050008;
-        public static final int action_create=0x7f050023;
-        public static final int action_settings=0x7f050022;
-        public static final int createSpotErrorTextView=0x7f050019;
-        public static final int createSpotMap=0x7f05001b;
-        public static final int createSpotSaveButton=0x7f05001c;
-        public static final int createSpotTitle=0x7f05001a;
-        public static final int deleteButton=0x7f050006;
-        public static final int enterButton=0x7f05001f;
-        public static final int errorTextView=0x7f050010;
+        public static final int TableLayout1=0x7f05001a;
+        public static final int TableLoginLayout=0x7f05000a;
+        public static final int action_create=0x7f050026;
+        public static final int action_download=0x7f050025;
+        public static final int action_upload=0x7f050024;
+        public static final int createSpotErrorTextView=0x7f05001b;
+        public static final int createSpotMap=0x7f05001d;
+        public static final int createSpotSaveButton=0x7f05001e;
+        public static final int createSpotTitle=0x7f05001c;
+        public static final int deleteButton=0x7f050007;
+        public static final int enterButton=0x7f050021;
+        public static final int errorTextView=0x7f050012;
         public static final int hybrid=0x7f050004;
-        public static final int introTextView=0x7f05000c;
-        public static final int logedUserInfoTextView=0x7f05001d;
-        public static final int loginButton=0x7f050016;
-        public static final int loginInfoTextView=0x7f05000e;
-        public static final int logoffButton=0x7f05001e;
+        public static final int introTextView=0x7f05000e;
+        public static final int logedUserInfoTextView=0x7f05001f;
+        public static final int loginButton=0x7f050018;
+        public static final int loginInfoTextView=0x7f050010;
+        public static final int logoffButton=0x7f050020;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
-        public static final int passwordEditText=0x7f050014;
-        public static final int registerButton=0x7f050017;
+        public static final int passwordEditText=0x7f050016;
+        public static final int progressBar1=0x7f050009;
+        public static final int registerButton=0x7f050019;
         public static final int satellite=0x7f050002;
-        public static final int spotMap=0x7f050007;
-        public static final int spot_title=0x7f050020;
-        public static final int spotsListContainer=0x7f050021;
-        public static final int tableRow1=0x7f050009;
-        public static final int tableRow2=0x7f05000b;
-        public static final int tableRow3=0x7f05000d;
-        public static final int tableRow4=0x7f050011;
-        public static final int tableRow5=0x7f050013;
-        public static final int tableRow6=0x7f050015;
-        public static final int tableRow7=0x7f05000f;
+        public static final int spotMap=0x7f050008;
+        public static final int spot_title=0x7f050022;
+        public static final int spotsListContainer=0x7f050023;
+        public static final int tableRow1=0x7f05000b;
+        public static final int tableRow2=0x7f05000d;
+        public static final int tableRow3=0x7f05000f;
+        public static final int tableRow4=0x7f050013;
+        public static final int tableRow5=0x7f050015;
+        public static final int tableRow6=0x7f050017;
+        public static final int tableRow7=0x7f050011;
         public static final int terrain=0x7f050003;
-        public static final int usernameEditText=0x7f050012;
+        public static final int uploadProgressBar=0x7f050006;
+        public static final int usernameEditText=0x7f050014;
         public static final int viewPager=0x7f050005;
-        public static final int welcomeTextView=0x7f05000a;
+        public static final int welcomeTextView=0x7f05000c;
     }
     public static final class integer {
         public static final int google_play_services_version=0x7f070000;
@@ -276,7 +280,6 @@ containing a value of this type.
     public static final class menu {
         public static final int list_item=0x7f0a0000;
         public static final int list_view_menu=0x7f0a0001;
-        public static final int main=0x7f0a0002;
     }
     public static final class string {
         public static final int action_create_save=0x7f060026;
@@ -395,6 +398,10 @@ containing a value of this type.
         public static final int exception_username_length=0x7f06003b;
         public static final int fragment_spots_list_title=0x7f06002b;
         public static final int hello_world=0x7f060036;
+        public static final int http_error_ok=0x7f060047;
+        public static final int http_error_spots_text=0x7f060048;
+        public static final int http_error_text=0x7f060046;
+        public static final int http_error_title=0x7f060045;
         public static final int intro_text=0x7f06001d;
         public static final int intro_wellcome=0x7f06001c;
         public static final int invalid_password=0x7f060028;
@@ -409,6 +416,8 @@ containing a value of this type.
         public static final int login_btn=0x7f060021;
         public static final int login_text=0x7f06001e;
         public static final int map_current_possition=0x7f060042;
+        public static final int menu_download=0x7f060044;
+        public static final int menu_upload=0x7f060043;
         public static final int password=0x7f060020;
         public static final int register_btn=0x7f060022;
         public static final int title_activity_list_item=0x7f060037;
